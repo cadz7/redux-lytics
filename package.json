@@ -1,0 +1,17 @@
+{
+  "name": "redux-lytics",
+  "version": "1.0.0",
+  "description": "Redux middleware to track analytics",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Rakshit Shukla",
+  "license": "MIT",
+  "keywords": [
+    "redux",
+    "beacon",
+    "analytics",
+    "middleware"
+  ]
+}
