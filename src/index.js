@@ -1,4 +1,4 @@
-function createLogger(eventMap = {}) {
+export default function createLogger(eventMap = {}) {
     return store => next => action => {
         if (action.type in eventMap) {
             if (navigator.sendBeacon) {
@@ -14,5 +14,3 @@ function createLogger(eventMap = {}) {
         return next(action)
     }
 }
-    
-export { createLogger }
