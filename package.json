@@ -13,5 +13,8 @@
     "beacon",
     "analytics",
     "middleware"
-  ]
+  ],
+  "dependencies": {
+    "whatwg-fetch": "^2.0.4"
+  }
 }

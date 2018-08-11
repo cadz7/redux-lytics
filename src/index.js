@@ -1,9 +1,12 @@
+import 'whatwg-fetch'
+
 function createLogger(eventMap = {}, defaultHeaders) {
     return store => next => action => {
         if (action.type in eventMap) {
-            const customHeaders = eventMap[action.type][headers]
+            const customHeaders = eventMap[action.type]['headers']
+            const url = eventMap[action.type]['url']
             const data = eventMap[action.type].data
-            
+
             const headers = customHeaders == {} ?
             defaultHeaders :
             Object.assign(defaultHeaders, customHeaders)
