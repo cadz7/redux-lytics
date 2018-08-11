@@ -1,15 +1,18 @@
-function createLogger(eventMap = {}) {
+function createLogger(eventMap = {}, defaultHeaders) {
     return store => next => action => {
         if (action.type in eventMap) {
-            if (navigator.sendBeacon) {
-                let result = navigator.sendBeacon(eventMap[action.type].url, JSON.stringify(eventMap[action.type].data));
-                if (!result) console.log('Failure.');
-            } else {
-                return fetch(url, {
-                    method: "POST",
-                    body: JSON.stringify(eventMap[action.type].data)
-                })
-            }
+            const customHeaders = eventMap[action.type][headers]
+            const data = eventMap[action.type].data
+            
+            const headers = customHeaders == {} ?
+            defaultHeaders :
+            Object.assign(defaultHeaders, customHeaders)
+            
+            return fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: defaultHeaders
+            })
         }
         return next(action)
     }
