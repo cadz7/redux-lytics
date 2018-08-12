@@ -15,6 +15,19 @@
     "middleware"
   ],
   "dependencies": {
+    "babel-plugin-dynamic-import-node": "^2.0.0",
+    "jest": "^23.5.0",
+    "redux": "^4.0.0",
     "whatwg-fetch": "^2.0.4"
+  },
+  "jest": {
+    "verbose": true
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "regenerator-runtime": "^0.12.1"
   }
 }
