@@ -1,26 +1,30 @@
-# Getting Started:
-Install redux-lytics:
-- NPM: `npm install redux-lytics --save-dev`
+# Redux-lytics
 
-Usage:
+Redux-lytics is a simple Redux middleware used to log events to a external service through HTTP POST requests.
+
+## Getting Started:
+Install redux-lytics:
+- NPM: `npm install redux-lytics`
+- Yarn: `yarn add redux-lytics`
+
+## Usage:
 ```
 // index.js
 import { createLogger } from 'redux-lytics';
-import { config, defaultHeaders } from './config'
+import { config, defaultHeaders } from './config';
 const logger = createLogger(config, defaultHeaders);
 const middleware = [logger];
 
 // config.js
 export const config = {
-  INCREMENT: {
-    url: "/analytics",
-    data: {},
-    headers: {}
-  }
-}
+    INCREMENT: {
+      url: "/analytics",
+      body: {'key': "hello"},
+      headers: {}
+    }
+  };
 
 export const defaultHeaders = {
-    Accept: application/json
-}
+    Accept: 'application/json'
+};
 ```
-
