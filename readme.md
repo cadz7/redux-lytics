@@ -1,6 +1,6 @@
 # Redux-lytics
 
-Redux-lytics is a simple Redux middleware used to log events to a external service through HTTP POST requests.
+Redux-lytics is a simple Redux middleware to track events to a external service through HTTP POST requests.
 
 ## Getting Started:
 Install redux-lytics:
@@ -28,3 +28,6 @@ export const defaultHeaders = {
     Accept: 'application/json'
 };
 ```
+
+## Contributing
+Please feel free to create a PR or suggest improvements. Any help is appreciated!
