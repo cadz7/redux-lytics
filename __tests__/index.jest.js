@@ -36,7 +36,7 @@ describe('index test', () => {
         );
     })
 
-    it('should not send API request if the action is not provided in config', (done) => {
+    it('should not make the API request if the action isnt provided in config', (done) => {
         store.dispatch({ type: untrackedActionType })
         setTimeout(() => {
             expect(global.fetch).not.toBeCalled();

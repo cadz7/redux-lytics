@@ -1,15 +1,36 @@
 import 'whatwg-fetch'
 
-function createLogger(eventMap = {}, defaultHeaders = {}) {
-    return store => next => action => {
-        if (action.type in eventMap) {
-            const customHeaders = eventMap[action.type]['headers']
-            const url = eventMap[action.type]['url']
-            const body = eventMap[action.type].body
+function _printUnexpectedActionPayload() {
+    console.error( // eslint-disable-line no-console
+        `Unexpected config provided. Please check https://github.com/cadz7/redux-lytics for reference.`
+    );
+}
 
-            const headers = customHeaders == {} ?
-            defaultHeaders :
-            Object.assign(defaultHeaders, customHeaders)
+function createLogger(actionPayload = {}, defaultHeaders = {}) {
+    return store => next => action => {
+        if (action.type in actionPayload) {
+            let url = '/'
+            let body = {}
+            let overrideHeaders = null
+
+            if ('headers' in actionPayload[action.type]) {
+                overrideHeaders = actionPayload[action.type].headers
+            }
+
+            const headers = overrideHeaders ?
+            Object.assign(defaultHeaders, overrideHeaders) :
+            defaultHeaders
+
+            if ('body' in actionPayload[action.type]) {
+                body = actionPayload[action.type].body
+            }
+
+            if ('url' in actionPayload[action.type]) {
+                url = actionPayload[action.type]['url']
+            } else {
+                _printUnexpectedActionPayload()
+                return next(action)
+            }
             
             fetch(url, {
                 method: "POST",
