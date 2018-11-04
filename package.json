@@ -4,7 +4,7 @@
   "description": "Redux middleware to track analytics",
   "main": "src/index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "jest"
   },
   "author": "Rakshit Shukla",
   "license": "MIT",
@@ -16,16 +16,14 @@
   ],
   "dependencies": {
     "babel-plugin-dynamic-import-node": "^2.0.0",
-    "jest": "^23.5.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "redux": "^4.0.0",
     "whatwg-fetch": "^2.0.4"
   },
-  "jest": {
-    "verbose": true
-  },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-jest": "^23.4.2",
+    "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "regenerator-runtime": "^0.12.1"

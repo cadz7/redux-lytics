@@ -18,7 +18,7 @@ function fireRequest(payload) {
         headers: payload.headers
     })
     .then(resp => {
-        if (resp.status > 400) {
+        if (resp.status > 400 && resp.status != 404) {
             rQueue.push({ url: payload.url, body: payload.body, headers: payload.headers})
         } else {
             totalCalls -= 1
