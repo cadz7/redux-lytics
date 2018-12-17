@@ -1,5 +1,6 @@
 import 'whatwg-fetch'
 
+const RETRY_PERIOD = 1000
 const rQueue = []
 let totalCalls = 0
 let lastTime = new Date()
@@ -39,7 +40,7 @@ function fireIfAvailable() {
     }
 }
 
-setInterval(fireIfAvailable, 1000)
+setInterval(fireIfAvailable, RETRY_PERIOD)
 
 function createLogger(actionPayload = {}, defaultHeaders = {}) {
     return store => next => action => {
